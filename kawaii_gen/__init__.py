@@ -1,4 +1,4 @@
-"""cute_japanese_girl_generator - Cute Japanese Girl Image Generator"""
+"""kawaii_gen - Kawaii Girl Image Generator using GAN"""
 
 __version__ = '0.1.0'
 __author__ = 'Xiong Jie <fwvillage@gmail.com>'

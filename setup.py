@@ -14,16 +14,16 @@ def read(filename):
 
 
 setup(
-    name="cute_japanese_girl_generator",
+    name="kawaii_gen",
     version="0.1.0",
-    url="https://github.com/xiong-jie-y/cute_japanese_girl_image_generator",
+    url="https://github.com/xiong-jie-y/kawaii_girl_generator",
     license='MIT',
 
     author="Xiong Jie",
     author_email="fwvillage@gmail.com",
 
-    description="Cute Japanese Girl Image Generator",
-    long_description=read("README.rst"),
+    description="Kawaii Girl Image Generator using GAN",
+    long_description=read("README.md"),
 
     packages=find_packages(exclude=('tests',)),
 
@@ -33,8 +33,6 @@ setup(
         'Development Status :: 2 - Pre-Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
