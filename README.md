@@ -1,6 +1,8 @@
 # Kawaii Girl Generator
 The module provide a feature to generate kawaii girls.
-The module currently support generating face image.
+The module currently support generating face images like below.
+
+![Catch Image](docs/images/catch_image.jpg)
 
 Kawaii is Japanese word and Kawaii is pronounced as [kaɰaiꜜi].
 This is like cute, but have more subtle meaning.
