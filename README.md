@@ -9,6 +9,8 @@ This is like cute, but have more subtle meaning.
 
 ## Usage
 ### Requirements
+Please use this module AT YOUR OWN RISK.
+
 * GPU: (I tested the code using RTX 2070)
 * conda
 * tensorflow-gpu: 1.14.0
