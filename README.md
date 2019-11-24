@@ -1,4 +1,6 @@
 # Kawaii Girl Generator
+(For Japanese version README, go to [README_ja](https://github.com/xiong-jie-y/kawaii_girl_generator/blob/master/README_ja.md).)
+
 The module provide a feature to generate kawaii girls.
 The module currently support generating face images like below.
 
