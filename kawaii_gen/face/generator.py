@@ -15,7 +15,7 @@ class GirlFace:
         self.latent_vector = latent_vector
 
 class GirlFaceGenerator:
-    def generate(self, num, seed=int(time.time())):
+    def generate(self, num, seed=int(time.time()), use_gpu=False):
         """Generate random girl faces.
 
         Args:
@@ -34,7 +34,8 @@ class GirlFaceGenerator:
                 func=tflib.convert_images_to_uint8, 
                 nchw_to_nhwc=True
             ), 
-            minibatch_size=8
+            minibatch_size=8,
+            use_gpu=use_gpu,
         )
 
         images = Gs.run(latents, None, **synthesis_kwargs)

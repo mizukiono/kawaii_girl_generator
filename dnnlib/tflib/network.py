@@ -360,6 +360,7 @@ class Network:
             minibatch_size: int = None,
             num_gpus: int = 1,
             assume_frozen: bool = False,
+            use_gpu: bool = True,
             **dynamic_kwargs) -> Union[np.ndarray, Tuple[np.ndarray, ...], List[np.ndarray]]:
         """Run this network for the given NumPy array(s), and return the output(s) as NumPy array(s).
 
@@ -404,8 +405,9 @@ class Network:
                     in_split = list(zip(*[tf.split(x, num_gpus) for x in in_expr]))
 
                 out_split = []
-                for gpu in range(num_gpus):
-                    with tf.device("/gpu:%d" % gpu):
+                if not use_gpu:
+                    gpu = 0
+                    with tf.device("/cpu:0"):
                         net_gpu = self.clone() if assume_frozen else self
                         in_gpu = in_split[gpu]
 
@@ -424,6 +426,27 @@ class Network:
 
                         assert len(out_gpu) == self.num_outputs
                         out_split.append(out_gpu)
+                else:
+                    for gpu in range(num_gpus):
+                        with tf.device("/gpu:%d" % gpu):
+                            net_gpu = self.clone() if assume_frozen else self
+                            in_gpu = in_split[gpu]
+
+                            if input_transform is not None:
+                                in_kwargs = dict(input_transform)
+                                in_gpu = in_kwargs.pop("func")(*in_gpu, **in_kwargs)
+                                in_gpu = [in_gpu] if tfutil.is_tf_expression(in_gpu) else list(in_gpu)
+
+                            assert len(in_gpu) == self.num_inputs
+                            out_gpu = net_gpu.get_output_for(*in_gpu, return_as_list=True, **dynamic_kwargs)
+
+                            if output_transform is not None:
+                                out_kwargs = dict(output_transform)
+                                out_gpu = out_kwargs.pop("func")(*out_gpu, **out_kwargs)
+                                out_gpu = [out_gpu] if tfutil.is_tf_expression(out_gpu) else list(out_gpu)
+
+                            assert len(out_gpu) == self.num_outputs
+                            out_split.append(out_gpu)
 
                 with tf.device("/cpu:0"):
                     out_expr = [tf.concat(outputs, axis=0) for outputs in zip(*out_split)]

@@ -13,9 +13,8 @@ This is like cute, but have more subtle meaning.
 ### Requirements
 Please use this module AT YOUR OWN RISK.
 
-* GPU: (I tested the code using RTX 2070)
 * conda
-* tensorflow-gpu: 1.14.0
+* tensorflow 1.14.0 or tensorflow-gpu: 1.14.0
 
 ### Installation
 One example of installation is
@@ -25,14 +24,25 @@ git clone git@github.com:xiong-jie-y/kawaii_girl_generator.git
 ## Create python environment
 conda create -n py37_cute_girl_generator python=3.7
 conda activate py37_cute_girl_generator
+
+### if you need faster generation
 conda install -y tensorflow-gpu==1.14.0
+### if you are ok with slower generation
+conda install -y tensorflow==1.14.0
+
 pip install pillow
 
+# workardoun for dnn lib
+pip install requests
+
 ## Prepare model
+cd kawaii_girl_generator
 python scripts/prepare_models.py
+pip install -e .
 ```
 
 ### Generate Random Girl Images
+It will generate 256x256 face image.
 ```bash
 cd kawaii_girl_generator
 python examples/generate_random_images.py --num 2 output/
