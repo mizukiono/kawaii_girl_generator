@@ -32,7 +32,7 @@ class GirlFaceGenerator:
         synthesis_kwargs = dict(
             output_transform=dict(
                 func=tflib.convert_images_to_uint8, 
-                nchw_to_nhwc=True
+                nchw_to_nhwc=False
             ), 
             minibatch_size=8,
             use_gpu=use_gpu,
