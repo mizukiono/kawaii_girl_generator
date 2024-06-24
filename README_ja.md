@@ -31,7 +31,12 @@ cd kawaii_girl_generator
 python examples/generate_random_images.py --num 2 output/
 ```
 
-## License
+## 利用規約
+モデルの出力とモデル自体は私的利用のみ可能です。
+つまり、ローカル環境で画像生成結果を確認することのみが可能ということになります。
+
+出力結果のアイコン利用、モデルのアプリへの組み込み、公開API化でのモデルの利用など私的利用以外は禁止します。
+
 ライセンスは`dnnlib/`以外は、[MIT License](https://github.com/xiong-jie-y/kawaii_girl_generator/blob/master/LICENSE)です。
 `dnnlib/`以下のファイルはNVIDIAが実装したもので、次のリポジトリにあります。https://github.com/NVlabs/stylegan: 061cc4effdcd1da86a0cc6e61e64b575cf35ffa.　論文は[1].
 

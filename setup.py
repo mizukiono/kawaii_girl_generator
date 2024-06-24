@@ -20,7 +20,7 @@ setup(
     license='MIT',
 
     author="Xiong Jie",
-    author_email="fwvillage@gmail.com",
+    author_email="",
 
     description="Kawaii Girl Image Generator using GAN",
     long_description=read("README.md"),
